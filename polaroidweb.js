@@ -30,7 +30,7 @@
     function calculateSize() {
         var size = viewport(),
             psize = Math.round(Math.min(size.width, size.height));
-        return psize * .6;
+        return psize * 0.6;
     }
 
     function setup() {
