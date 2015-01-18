@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>polaroidweb - see the web as a square</title>
+    <style type="text/css">
+        .main {
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .bookmark {
+            position: relative;;
+            display: block;
+            text-indent: -999px;
+            overflow: hidden;
+        }
+
+        .bookmark:after {
+            content: 'drag me to bookmarks!';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            text-indent: 0;
+        }
+    </style>
+    <script>
+        var bookmarkUrl = 'https://rawgit.com/pucka/polaroidweb/master/dist/polaroidweb.min.js';
+        if (document.location.hostname == "localhost") { //if local dev
+            bookmarkUrl = 'dist/polaroidweb.min.js';
+        }
+    </script>
+</head>
+<body>
+    <div class="main">
+        <header>
+            <h1>polaroidweb - see the web as a square</h1>
+        </header>
+        <p>
+            <a class="bookmark" onclick="return false;" href="javascript: (function(){var j = document.createElement('script');j.setAttribute('src', bookmarkUrl);document.body.appendChild(j);}());" title="polaroidweb now!">polaroidweb now!</a>
+        </p>
+    </div>
+</body>
+</html>
