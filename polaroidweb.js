@@ -8,7 +8,7 @@
     var styles = 'body {background-color: #000; min-height: 0; height: auto;} ' +
         '               #polaroidweb_container{position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);overflow: hidden;border: 40px solid #fff; -webkit-filter: contrast(1.5) brightness(.9);filter: contrast(1.5) brightness(.9);}' +
                     '#polaroid_iframe{background-color: #fff; border: 2px solid #000}';
-    var filterStyles = '#polaroidweb_container:after {content: ""; display: block;height: 100%;width: 100%;top: 0;left: 0;position: absolute;background: -webkit-radial-gradient(circle,#804e0f,#3b003b);background: radial-gradient(circle,#804e0f,#3b003b);mix-blend-mode: screen;}';
+    var filterStyles = '#polaroidweb_container:after {content: ""; display: block;height: 100%;width: 100%;top: 0;left: 0;position: absolute;background: -webkit-radial-gradient(circle,#804e0f,#3b003b);background: radial-gradient(circle,#804e0f,#3b003b);mix-blend-mode: screen;pointer-events: none}';
     var body = document.getElementsByTagName('body')[0];
     var container, iframe, svgSpotlight;
 
