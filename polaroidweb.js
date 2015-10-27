@@ -5,8 +5,10 @@
         return window.polaroidweb;
     }
 
-    var styles = 'body {background-color: #000; min-height: 0; height: auto;} #polaroidweb_container{position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);overflow: hidden;border: 40px solid #fff; }#polaroid_iframe{background-color: #fff; border: 2px solid #000}.svgfilter{position: absolute;top: 0;left:0;width:100%;height:100%;pointer-events:none;}';
-    var svgfilter = '<svg class="svgfilter" xmlns="http://www.w3.org/2000/svg" version="1.1"><defs><filter id="f1" x="0%" y="0%" width="100%" height="100%"><feDiffuseLighting result = "diffOut" diffuseConstant = "1" lighting-color = "white"><feSpotLight id="spotlight" x="225" y="116" z="350" pointsAtX="0" pointsAtY="0" pointsAtZ="0" specularExponent="15" limitingConeAngle="0"/></feDiffuseLighting><feColorMatrix in="diffOut" result="alphaMap" type="luminanceToAlpha"/><feComponentTransfer in="alphaMap" result="invertlight"><feFuncA type="table" tableValues="1 0 0 0 0"/></feComponentTransfer><feComposite operator="xor" result="infocus" in2="SourceGraphic" in="invertlight"/><feColorMatrix type="matrix" in="SourceGraphic" result="highContrast" values="2 0 0 0 -1 0 2 0 0 -1 0 0 2 0 -1 0 0 0 1 0"/><feComposite operator="over" in="infocus" in2="highContrast"/></filter></defs><rect width="100%" height="100%" filter="url(#f1)" fill="none"/></svg>';
+    var styles = 'body {background-color: #000; min-height: 0; height: auto;} ' +
+        '               #polaroidweb_container{position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);overflow: hidden;border: 40px solid #fff; -webkit-filter: contrast(1.5) brightness(.9);filter: contrast(1.5) brightness(.9);}' +
+                    '#polaroid_iframe{background-color: #fff; border: 2px solid #000}';
+    var filterStyles = '#polaroidweb_container:after {content: ""; display: block;height: 100%;width: 100%;top: 0;left: 0;position: absolute;background: -webkit-radial-gradient(circle,#804e0f,#3b003b);background: radial-gradient(circle,#804e0f,#3b003b);mix-blend-mode: screen;}';
     var body = document.getElementsByTagName('body')[0];
     var container, iframe, svgSpotlight;
 
@@ -36,8 +38,8 @@
     function setup() {
         var polaroidHtml = '<div id="polaroidweb_container"><iframe id="polaroid_iframe" width="100%" height="100%" src="' +
                         document.location +
-                        '"></iframe>' + svgfilter + '</div><style type="text/css">' +
-                        styles + '</style>';
+                        '"></iframe></div><style type="text/css">' +
+                        styles + filterStyles + '</style>';
 
         body.innerHTML = polaroidHtml;
 
